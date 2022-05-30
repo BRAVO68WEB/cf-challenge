@@ -1,3 +1,12 @@
 name = "cf-challenge"
 main = "src/index.js"
 compatibility_date = "2022-05-29"
+
+
+[[kv_namespaces]]
+binding = "BRAVO68WEB"
+id = "8e89d604e32049589cb15d13c92372a9"
+preview_id="35acfef0c3ac4301adb27af92f33ce8b"
+
+[vars]
+CF_STORAGE_AREA__DEFAULT_KV_NAMESPACE = "cf-challenge-BRAVO68WEB"

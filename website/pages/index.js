@@ -32,9 +32,9 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <Nav />
-      <Main />
-      <Footer />
+        <Nav />
+        <Main />
+      {/*<Footer />*/}
     </div>
   );
 }

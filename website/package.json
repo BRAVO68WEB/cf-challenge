@@ -19,11 +19,15 @@
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-feather": "^2.0.10",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.7",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
-    "prettier": "^2.6.2"
+    "postcss": "^8.4.14",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.0.24"
   }
 }

@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;600;700;800;900&display=swap");
 
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --color1: #11052c;
   --color2: #3d087b;
@@ -31,7 +37,7 @@ body {
   margin: 0;
   font-family: var(--font), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   /* color:var(--color3)   */
   color: var(--color7);

@@ -8,7 +8,7 @@ export default function Home(props) {
     return (
         <div>
             <Head>
-                <title>Write</title>
+                <title>WorkerBin ✏️</title>
                 <meta
                     name="description"
                     content="Local Travel is a website listing your nearest locations to travel to."

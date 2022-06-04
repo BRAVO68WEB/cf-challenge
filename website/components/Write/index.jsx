@@ -26,9 +26,9 @@ function Write(props) {
                         <div className="bg-red-300 shadow h-5 w-5 rounded-full"></div>
                         <div className="bg-yellow-400 shadow ml-2 h-5 w-5 rounded-full"></div>
                     </div>
-                    <p>Pastebin</p>
+                    <p>WorkerBin</p>
                 </div>
-                <div className="main ">
+                <div className="main">
                     <div className="controls-text w-full flex items-center p-5">
                         <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow">
                             <Edit />
@@ -46,7 +46,7 @@ function Write(props) {
                             <Copy />
                         </button>
                     </div>
-                    <div className="editor ">
+                    <div className="editor">
                         <div className="line-number border-l-0 border-b-0 border-2 p-2 text-center text-black">
                             {Array.from(Array(count).keys()).map(
                                 (value, index) => {

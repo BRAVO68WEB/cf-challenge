@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Copy, Edit, Lock, Save, Trash } from "react-feather";
+import { Copy, Lock, Save } from "react-feather";
+import { FireIcon } from '@heroicons/react/solid'
 import WriteStyle from "./Write.style";
+
+import axios from "axios";
 
 function Write(props) {
     const [value, setValue] = useState("");
@@ -15,6 +18,27 @@ function Write(props) {
         setCount(count);
         setValue(text);
     }
+    function onLock(){}
+    async function onSave(){
+        var data = {
+            "data": value
+        };
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8787/add',
+            data : data
+        };
+
+        await axios(config)
+            .then(async function (response) {
+              console.log(response.data);
+            })
+        .catch(function (error) {
+            console.log(error);
+            });       
+    }
+    function onCopy(){}
     useEffect(() => {}, []);
     return (
         <WriteStyle
@@ -30,20 +54,17 @@ function Write(props) {
                 </div>
                 <div className="main">
                     <div className="controls-text w-full flex items-center p-5">
-                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow">
-                            <Edit />
-                        </button>
-                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow">
+                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow" onClick={onLock}>
                             <Lock />
                         </button>
-                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow">
+                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow" onClick={onSave}>
                             <Save />
                         </button>
-                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow">
-                            <Trash />
-                        </button>
-                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow">
+                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow" onClick={onCopy}>
                             <Copy />
+                        </button>
+                        <button className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow" onClick={onCopy}>
+                            <FireIcon className="h-6 w-5 text-black-1000"/>
                         </button>
                     </div>
                     <div className="editor">

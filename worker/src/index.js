@@ -6,6 +6,7 @@ import {
 } from 'nanoid';
 
 import CryptoJS from 'crypto-js';
+import { handleCors, wrapCorsHeader } from './corsHelper'
 
 const reqHeaders = {
   "Content-Type": "application/json; charset=utf-8",
@@ -65,8 +66,9 @@ router.post('/add', async (request) => {
       headers: reqHeaders
     })
   }
-
 })
+
+router.options('/add', handleCors({ methods: 'POST', maxAge: 86400 }))
 
 router.post('/fetch', async (request) => {
 
@@ -107,9 +109,9 @@ router.post('/fetch', async (request) => {
     }
 
     const returnData = JSON.stringify(toReturn, null, 2);
-    return new Response(returnData, {
+    return wrapCorsHeader(new Response(returnData, {
       headers: reqHeaders
-    })
+    }))
   } catch (err) {
     console.log(err)
     return new Response(err, {

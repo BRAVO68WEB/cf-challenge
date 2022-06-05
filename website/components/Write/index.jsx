@@ -21,21 +21,16 @@ function Write(props) {
         setCount(count);
         setValue(text);
     }
-    function onLock() {}
+    function onLock() {
+        
+    }
     async function onSave() {
-        // await Axios.post("/add", { data: value })
-        //     .then(async function (response) {
-        //         console.log(response.data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-        await Axios.post("/add", { data: "hello" })
-            .then((res) => {
-                console.log(res);
+        await Axios.post("/add", { data: value })
+            .then(async function (response) {
+                console.log(response.data);
             })
-            .catch((err) => {
-                console.error(err);
+            .catch(function (error) {
+                console.log(error);
             });
     }
     function onCopy() {}

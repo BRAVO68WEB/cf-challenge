@@ -21,7 +21,12 @@ function Write(props) {
         setCount(count);
         setValue(text);
     }
-    function onLock() {}
+    function setPassword(password) {
+        console.log(password);
+    }
+    function setBurn() {
+        console.log("burn it");
+    }
     async function onSave() {
         // await Axios.post("/add", { data: value })
         //     .then(async function (response) {
@@ -101,8 +106,8 @@ function Write(props) {
                     </div>
                 </div>
             </div>
-            <Modal open={modal} setOpen={setModal} />
-            <LockModal open={lockModal} setOpen={setLockModal} />
+            <Modal open={modal} setOpen={setModal} setBurn={setBurn} />
+            <LockModal open={lockModal} setOpen={setLockModal} setPassword={setPassword} />
         </WriteStyle>
     );
 }

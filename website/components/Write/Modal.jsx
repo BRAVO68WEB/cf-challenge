@@ -4,8 +4,12 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import { FireIcon } from "@heroicons/react/solid";
 
-export default function Modal({ open, setOpen }) {
+export default function Modal({ open, setOpen, setBurn }) {
     const cancelButtonRef = useRef(null);
+    function onClick() {
+        setBurn();
+        setOpen(false);
+    }
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -59,7 +63,7 @@ export default function Modal({ open, setOpen }) {
                                     <button
                                         type="button"
                                         className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-bold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:col-start-2 sm:text-sm"
-                                        onClick={() => setOpen(false)}
+                                        onClick={setBurn}
                                     >
                                         Set it to Burn
                                     </button>

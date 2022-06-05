@@ -3,9 +3,15 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { LockClosedIcon } from "@heroicons/react/solid";
 
-export default function LockModal({ open, setOpen }) {
+export default function LockModal({ open, setOpen, setPassword }) {
     const cancelButtonRef = useRef(null);
-
+    const [input, setInput] = useState("");
+    function onClick() {
+        if (input.trim() !== "") {
+            setPassword(input);
+            setOpen(false);
+        }
+    }
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog
@@ -57,10 +63,14 @@ export default function LockModal({ open, setOpen }) {
                                 <div className="m-4">
                                     <div className="mt-1">
                                         <input
+                                            value={input}
+                                            onChange={(evt) => {
+                                                setInput(evt.target.value);
+                                            }}
                                             type="password"
                                             name="password"
                                             id="password"
-                                            className="shadow-sm focus:ring-gray-500 focus:border-gray-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                            className="shadow-sm focus:ring-gray-500 focus:border-gray-500 block w-full sm:text-sm border-gray-300 rounded-md text-black"
                                             placeholder="password"
                                         />
                                     </div>
@@ -69,7 +79,7 @@ export default function LockModal({ open, setOpen }) {
                                     <button
                                         type="button"
                                         className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-bold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:col-start-2 sm:text-sm"
-                                        onClick={() => setOpen(false)}
+                                        onClick={onClick}
                                     >
                                         Accept
                                     </button>

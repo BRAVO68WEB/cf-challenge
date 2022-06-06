@@ -62,16 +62,20 @@ router.post('/add', async (request) => {
     })
   } catch (err) {
     console.log(err)
-    return new Response("Error", {
+    var toReturn = {
+      data: err.message
+    };
+    const returnData = JSON.stringify(toReturn, null, 2);
+    return wrapCorsHeader(new Response(returnData, {
       headers: reqHeaders
-    })
+    }))
   }
 })
 
 router.options('/add', handleCors({ methods: 'POST', maxAge: 86400 }))
+router.options('/fetch', handleCors({ methods: 'POST', maxAge: 86400 }))
 
 router.post('/fetch', async (request) => {
-
   try {
     let data = {}
     let toFetch = {}
@@ -114,9 +118,13 @@ router.post('/fetch', async (request) => {
     }))
   } catch (err) {
     console.log(err)
-    return new Response(err, {
+    var toReturn = {
+      data: err.message
+    };
+    const returnData = JSON.stringify(toReturn, null, 2);
+    return wrapCorsHeader(new Response(returnData, {
       headers: reqHeaders
-    })
+    }))
   }
 })
 

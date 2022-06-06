@@ -22,6 +22,7 @@ function Write({ id: key }) {
         setCount(count);
         setValue(text);
     }
+<<<<<<< HEAD
     // function setPassword(password) {
     //     console.log(password);
     // }
@@ -32,9 +33,18 @@ function Write({ id: key }) {
         await Axios.post("/add", { data: "hello" })
             .then((res) => {
                 console.log(res);
+=======
+    function onLock() {
+        
+    }
+    async function onSave() {
+        await Axios.post("/add", { data: value })
+            .then(async function (response) {
+                console.log(response.data);
+>>>>>>> 56773879f58a76b230fa19c22b0879ee73e1d30b
             })
-            .catch((err) => {
-                console.error(err);
+            .catch(function (error) {
+                console.log(error);
             });
     }
     function onCopy() {

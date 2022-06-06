@@ -7,8 +7,7 @@ import { FireIcon } from "@heroicons/react/solid";
 export default function Modal({ open, setOpen, final }) {
   const cancelButtonRef = useRef(null);
   function onClick(){
-    final = "https://workerbin.b68dev.xyz/"+final
-    navigator.clipboard.writeText(final);
+    navigator.clipboard.writeText("https://workerbin.b68dev.xyz/?key="+final);
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -54,7 +53,7 @@ export default function Modal({ open, setOpen, final }) {
                       as="h3"
                       className="text-lg leading-6 font-medium text-gray-900"
                     >
-                      {"https://workerbin.b68dev.xyz/"+final}
+                      {"https://workerbin.b68dev.xyz/?key="+final}
                     </Dialog.Title>
                     <button className={"h-6 w-6 text-red-600"} onClick={onClick}>
                       <ClipboardCopyIcon />

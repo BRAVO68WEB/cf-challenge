@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Copy, Lock, Save } from "react-feather";
+import { Copy, Lock, Save, GitHub } from "react-feather";
 import { FireIcon } from "@heroicons/react/solid";
 import WriteStyle from "./Write.style";
 import Modal from "./Modal";
@@ -7,6 +7,7 @@ import Final from "./Final";
 // import LockModal from "./LockModal";
 import Axios from "helpers/Axios";
 import { useRouter } from "next/router";
+import { GlobeIcon } from "@heroicons/react/outline";
 
 function Write() {
     const router = useRouter();
@@ -36,6 +37,9 @@ function Write() {
     function setBurn() {
         setBurnit(!burnit);
     }
+    function openGithub(){
+        router.push('https://github.com/BRAVO68WEB/cf-challenge');
+    }
     async function onSave() {
         await Axios.post("/add", { data: value, readOnce: burnit })
             .then((res) => {
@@ -55,6 +59,9 @@ function Write() {
     }
     function onCopy() {
         navigator.clipboard.writeText(value);
+    }
+    function openIsp() {
+        router.push("/isp");
     }
     useEffect(() => {
         if (!key) return;
@@ -115,6 +122,18 @@ function Write() {
                             onClick={onCopy}
                         >
                             <Copy />
+                        </button>
+                        <button
+                            className="edit p-2 mx-2 rounded-full shadow text-black bg-amber-100"
+                            onClick={openIsp}
+                        >
+                            <GlobeIcon className="h-6 w-5 text-black-1000"/>
+                        </button>
+                        <button
+                            className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow"
+                            onClick={openGithub}
+                        >
+                            <GitHub />
                         </button>
                     </div>
                     <div className="editor">

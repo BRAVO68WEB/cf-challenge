@@ -6,13 +6,14 @@ import Modal from "./Modal";
 import LockModal from "./LockModal";
 import Axios from "helpers/Axios";
 
-function Write(props) {
+function Write({ id: key }) {
     const [value, setValue] = useState("");
     const [count, setCount] = useState(1);
     const [modal, setModal] = useState(false);
-    const [lockModal, setLockModal] = useState(false);
+    // const [lockModal, setLockModal] = useState(false);
 
     function handleValueChange(evt) {
+        if (key) return;
         const text = evt.target.value;
         const lines = text.split("\n");
         const count = lines.length;
@@ -21,20 +22,13 @@ function Write(props) {
         setCount(count);
         setValue(text);
     }
-    function setPassword(password) {
-        console.log(password);
-    }
+    // function setPassword(password) {
+    //     console.log(password);
+    // }
     function setBurn() {
         console.log("burn it");
     }
     async function onSave() {
-        // await Axios.post("/add", { data: value })
-        //     .then(async function (response) {
-        //         console.log(response.data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
         await Axios.post("/add", { data: "hello" })
             .then((res) => {
                 console.log(res);
@@ -43,8 +37,17 @@ function Write(props) {
                 console.error(err);
             });
     }
-    function onCopy() {}
-    useEffect(() => {}, []);
+    function onCopy() {
+        navigator.clipboard.writeText(value);
+    }
+    useEffect(() => {
+        if (!key) return;
+        Axios.post(`/${key}`, {})
+            .then((res) => {})
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
     return (
         <WriteStyle className={"w-screen h-screen flex justify-center items-center "}>
             <div className="writer  bg-amber-50 border-4 border-black rounded-lg ">
@@ -57,33 +60,36 @@ function Write(props) {
                 </div>
                 <div className="main">
                     <div className="controls-text w-full flex items-center p-5">
-                        <button
+                        {/* <button
                             className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow"
                             onClick={() => {
                                 setLockModal(true);
                             }}
+                            disabled={key ? true : false}
                         >
                             <Lock />
-                        </button>
+                        </button> */}
                         <button
                             className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow"
                             onClick={onSave}
+                            disabled={key ? true : false}
                         >
                             <Save />
-                        </button>
-                        <button
-                            className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow"
-                            onClick={onCopy}
-                        >
-                            <Copy />
                         </button>
                         <button
                             className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow"
                             onClick={() => {
                                 setModal(true);
                             }}
+                            disabled={key ? true : false}
                         >
                             <FireIcon className="h-6 w-5 text-black-1000" />
+                        </button>
+                        <button
+                            className="edit p-2 mx-2 rounded-full text-black bg-amber-100 shadow"
+                            onClick={onCopy}
+                        >
+                            <Copy />
                         </button>
                     </div>
                     <div className="editor">
@@ -107,7 +113,7 @@ function Write(props) {
                 </div>
             </div>
             <Modal open={modal} setOpen={setModal} setBurn={setBurn} />
-            <LockModal open={lockModal} setOpen={setLockModal} setPassword={setPassword} />
+            {/* <LockModal open={lockModal} setOpen={setLockModal} setPassword={setPassword} /> */}
         </WriteStyle>
     );
 }

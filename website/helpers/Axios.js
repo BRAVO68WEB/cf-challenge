@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://localhost:8787/",
+  baseURL: "https://cf-challenge.dftechs.workers.dev/",
 });

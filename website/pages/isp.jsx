@@ -7,9 +7,7 @@ export default function ispInfo() {
   return (
     <div>
       <Head>
-        <title>
-         Who is my Internet Provider?
-        </title>
+        <title>Who is my Internet Provider?</title>
         <meta
           name="description"
           content="Local Travel is a website listing your nearest locations to travel to."
@@ -32,8 +30,8 @@ export default function ispInfo() {
           rel="stylesheet"
         />
       </Head>
-        <Nav />
-        <Main />
+      <Nav />
+      <Main />
       <Footer />
     </div>
   );

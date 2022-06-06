@@ -1,9 +1,9 @@
 const securityHeaders = [
   {
-    key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
-  }
-]
+    key: "Referrer-Policy",
+    value: "origin-when-cross-origin",
+  },
+];
 
 const moduleExports = {
   reactStrictMode: true,
@@ -14,10 +14,10 @@ const moduleExports = {
     return [
       {
         // Apply these headers to all routes in your application.
-        source: '/*',
+        source: "/*",
         headers: securityHeaders,
       },
-    ]
-  }
+    ];
+  },
 };
 module.exports = moduleExports;

@@ -11,7 +11,7 @@ export default function Home(props) {
         <title>WorkerBin ✏️</title>
         <meta
           name="description"
-          content="Local Travel is a website listing your nearest locations to travel to."
+          content="A Pastebin alternative, but it is using CF Worker API to store the data."
         />
         <meta
           name="keywords"

@@ -10,7 +10,7 @@ export default function ispInfo() {
         <title>Who is my Internet Provider?</title>
         <meta
           name="description"
-          content="Local Travel is a website listing your nearest locations to travel to."
+          content="Find out who your Internet Provider is .."
         />
         <meta
           name="keywords"

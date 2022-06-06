@@ -10,6 +10,7 @@ function Write({ id: key }) {
     const [value, setValue] = useState("");
     const [count, setCount] = useState(1);
     const [modal, setModal] = useState(false);
+    const [burnit, setBurnit] = useState(false);
     // const [lockModal, setLockModal] = useState(false);
 
     function handleValueChange(evt) {
@@ -27,6 +28,7 @@ function Write({ id: key }) {
     // }
     function setBurn() {
         console.log("burn it");
+        setBurnit(!burnit);
     }
     async function onSave() {
         await Axios.post("/add", { data: "hello" })
@@ -112,7 +114,7 @@ function Write({ id: key }) {
                     </div>
                 </div>
             </div>
-            <Modal open={modal} setOpen={setModal} setBurn={setBurn} />
+            <Modal open={modal} setOpen={setModal} setBurn={setBurn} burnit={burnit} />
             {/* <LockModal open={lockModal} setOpen={setLockModal} setPassword={setPassword} /> */}
         </WriteStyle>
     );
